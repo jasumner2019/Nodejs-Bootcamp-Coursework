@@ -89,7 +89,7 @@ campsiteRouter.route('/:campsiteId/comments')
             res.setHeader('Content-Type', 'application/json');
             res.json(campsite.comments);
         } else {
-            err = new Error(`Campsite ${req.params.campsiteId} not found`);
+            const err = new Error(`Campsite ${req.params.campsiteId} not found`);
             err.status = 404;
             return next(err);
         }
@@ -110,7 +110,7 @@ campsiteRouter.route('/:campsiteId/comments')
             })
             .catch(err => next(err));
         } else {
-            err = new Error(`Campsite ${req.params.campsiteId} not found`);
+            const err = new Error(`Campsite ${req.params.campsiteId} not found`);
             err.status = 404;
             return next(err);
         }
@@ -136,7 +136,7 @@ campsiteRouter.route('/:campsiteId/comments')
             })
             .catch(err => next(err));
         } else {
-            err = new Error(`Campsite ${req.params.campsiteId} not found`);
+            const err = new Error(`Campsite ${req.params.campsiteId} not found`);
             err.status = 404;
             return next(err);
         }
@@ -155,11 +155,11 @@ campsiteRouter.route('/:campsiteId/comments/:commentId')
             res.setHeader('Content-Type', 'application/json');
             res.json(campsite.comments.id(req.params.commentId));
         } else if (!campsite) {
-            err = new Error(`Campsite ${req.params.campsiteId} not found`);
+            const err = new Error(`Campsite ${req.params.campsiteId} not found`);
             err.status = 404;
             return next(err);
         } else {
-            err = new Error(`Comment ${req.params.commentId} not found`);
+            const err = new Error(`Comment ${req.params.commentId} not found`);
             err.status = 404;
             return next(err);
         }
@@ -189,15 +189,15 @@ campsiteRouter.route('/:campsiteId/comments/:commentId')
             })
             .catch(err => next(err));
         } else if (!campsite) {
-            err = new Error(`Campsite ${req.params.campsiteId} not found`);
+            const err = new Error(`Campsite ${req.params.campsiteId} not found`);
             err.status = 404;
             return next(err);
         } else if (!comment.author.equals(req.user)) {
-            err = new Error("Only the author of this comment can edit or delete it");
+            const err = new Error("Only the author of this comment can edit or delete it");
             err.status = 403;
             return next(err)
         } else {
-            err = new Error(`Comment ${req.params.commentId} not found`);
+            const err = new Error(`Comment ${req.params.commentId} not found`);
             err.status = 404;
             return next(err);
         }
@@ -218,15 +218,15 @@ campsiteRouter.route('/:campsiteId/comments/:commentId')
             })
             .catch(err => next(err));
         } else if (!campsite) {
-            err = new Error(`Campsite ${req.params.campsiteId} not found`);
+            const err = new Error(`Campsite ${req.params.campsiteId} not found`);
             err.status = 404;
             return next(err);
         } else if (!comment.author.equals(req.user)) {
-            err = new Error("Only the author of this comment can edit or delete it");
+            const err = new Error("Only the author of this comment can edit or delete it");
             err.status = 403;
             return next(err)
         } else {
-            err = new Error(`Comment ${req.params.commentId} not found`);
+            const err = new Error(`Comment ${req.params.commentId} not found`);
             err.status = 404;
             return next(err);
         }
